@@ -19,7 +19,7 @@ public class ConnectionStatic {
         try {
             init = new InitialContext();
             init = (Context) init.lookup("java:comp/env");
-            ds = (DataSource) init.lookup("jdbc/b");
+            ds = (DataSource) init.lookup("jdbc/botiga");
             return  ds.getConnection();
         } catch (NamingException e) {
             e.printStackTrace();

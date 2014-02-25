@@ -8,14 +8,15 @@ public class Sessio {
 private String nick;
 private Map<Producte, Integer> carrito;
 
-//-------------------------------------------------
-// Constructor
-//-------------------------------------------------
+/**
+ * 
+ * @param nick 
+ * @param carrito 
+ */
 
 public Sessio(String nick, Map<Producte, Integer> carrito) {
 	super();
 	this.nick = nick;
-
 	this.carrito = carrito;
 }
 

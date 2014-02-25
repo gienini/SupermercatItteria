@@ -93,8 +93,9 @@ DROP TABLE IF EXISTS `usuaris`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuaris` (
-  `id` varchar(50) DEFAULT NULL,
+  `nick` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
+  `pass` varchar(50) DEFAULT NULL,
   `edat` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telefon` int(11) DEFAULT NULL
@@ -119,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-25 13:33:29
+-- Dump completed on 2014-02-25 13:54:39

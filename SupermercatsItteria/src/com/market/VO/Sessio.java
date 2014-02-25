@@ -1,6 +1,5 @@
 package com.market.VO;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Sessio {
@@ -8,14 +7,17 @@ public class Sessio {
 
 private String nick;
 private int quantitat;
+private Map<Producte, Integer> carrito;
 
 //-------------------------------------------------
 // Constructor
 //-------------------------------------------------
 
-private static Map<Producte,Integer> createMap() {
-    Map<Producte,Integer> Carrito = new HashMap<Producte,Integer>();
-    return Carrito;
+public Sessio(String nick, int quantitat, Map<Producte, Integer> carrito) {
+	super();
+	this.nick = nick;
+	this.quantitat = quantitat;
+	this.carrito = carrito;
 }
 
 //-------------------------------------------------
@@ -38,5 +40,14 @@ public void setQuantitat(int quantitat) {
 	this.quantitat = quantitat;
 }
 
+public Map<Producte, Integer> getCarrito() {
+	return carrito;
+}
+
+public void setCarrito(Map<Producte, Integer> carrito) {
+	this.carrito = carrito;
+}
+
 
 }
+

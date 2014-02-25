@@ -1,9 +1,7 @@
-package com.market.Form;
+package com.market.VO;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import com.market.VO.Producte;
 
 public class Sessio {
 

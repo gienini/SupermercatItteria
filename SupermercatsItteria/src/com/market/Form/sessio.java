@@ -7,18 +7,6 @@ private String nom;
 private float preu;
 private int quantitat;
 
-// -------------------------------------------------------
-//  Creació de un nou producte
-// -------------------------------------------------------
-
-
-public Producte (String ProducteNom, double ProductePreu, int ProducteQuantitat)
-{
-  nom = ProducteNom;
-  preu = ProductePreu;
-  quantitat = ProducteQuantitat;
-
-}
 
 // -------------------------------------------------
 //   Retorna el preu per unitat del producte

@@ -9,7 +9,7 @@ public class producte {
 
 
 // -------------------------------------------------------
-//  Creació de un nou producte
+//  Creació de un nou producte-
 // -------------------------------------------------------
 
 

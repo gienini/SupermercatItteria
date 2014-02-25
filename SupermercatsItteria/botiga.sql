@@ -46,9 +46,12 @@ DROP TABLE IF EXISTS `comandes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idusuari` varchar(50) DEFAULT NULL,
   `nomproducte` varchar(50) DEFAULT NULL,
-  `quantitat` int(11) DEFAULT NULL
+  `quantitat` int(11) DEFAULT NULL,
+  `pagat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -120,4 +123,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-25 13:54:39
+-- Dump completed on 2014-02-25 15:25:45

@@ -1,55 +1,44 @@
 package com.market.Form;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.market.VO.Producte;
+
 public class Sessio {
 
 
-private String nom;
-private float preu;
+private String nick;
 private int quantitat;
 
 //-------------------------------------------------
 // Constructor
 //-------------------------------------------------
 
-
-public Sessio(String nom, float preu, int quantitat) {
-	super();
-	this.nom = nom;
-	this.preu = preu;
-	this.quantitat = quantitat;
+private static Map<Producte,Integer> createMap() {
+    Map<Producte,Integer> Carrito = new HashMap<Producte,Integer>();
+    return Carrito;
 }
 
 //-------------------------------------------------
-// get i set nom
+// get i set
 //-------------------------------------------------
 
-public String getNom() {
-	return nom;
-}
-public void setNom(String nom) {
-	this.nom = nom;
+public String getNick() {
+	return nick;
 }
 
-//-------------------------------------------------
-// get i set preu
-//-------------------------------------------------
-
-public float getPreu() {
-	return preu;
+public void setNick(String nick) {
+	this.nick = nick;
 }
-public void setPreu(float preu) {
-	this.preu = preu;
-}
-
-//-------------------------------------------------
-//get i set quantitat
-//-------------------------------------------------
 
 public int getQuantitat() {
 	return quantitat;
 }
+
 public void setQuantitat(int quantitat) {
 	this.quantitat = quantitat;
 }
 
-} 
+
+}

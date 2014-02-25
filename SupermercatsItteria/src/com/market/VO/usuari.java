@@ -1,6 +1,6 @@
 package com.market.VO;
 
-public class usuari {
+public class Usuari {
 	
 	private String nick;
 	private String nom;
@@ -14,7 +14,7 @@ public class usuari {
 //  Contructor Usuari
 // -------------------------------------------------------
 
-	public usuari(String nick, String pass) {
+	public Usuari(String nick, String pass) {
 		super();
 		this.nick = nick;
 		this.pass = pass;

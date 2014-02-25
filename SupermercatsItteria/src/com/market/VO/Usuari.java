@@ -1,6 +1,6 @@
 package com.market.VO;
 
-public class usuari {
+public class Usuari {
 	
 	private String nick;
 	private String nom;
@@ -14,11 +14,23 @@ public class usuari {
 //  Contructor Usuari
 // -------------------------------------------------------
 
-public Usuari (String UsuariNom, String UsuariPass){
+	public Usuari(String nick, String pass) {
+		super();
+		this.nick = nick;
+		this.pass = pass;
+	}
 	
-	nom = UsuariNom;
-	pass = UsuariPass;
-	
+
+//-------------------------------------------------
+//get i set nick
+//-------------------------------------------------
+
+public String getNick() {
+	return nick;
+}
+
+public void setNick(String nick) {
+	this.nick = nick;
 }
 
 //-------------------------------------------------
@@ -63,7 +75,7 @@ public void setEdat(int edat)
 //-------------------------------------------------
 //get i set email
 //-------------------------------------------------
-public String getemail()
+public String getEmail()
 {
 return email;
 }

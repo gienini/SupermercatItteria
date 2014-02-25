@@ -1,18 +1,18 @@
-package com.market.DAO;
+package com.market.dao;
 
 import java.util.List;
 
-import com.market.VO.producte;
+import com.market.VO.Producte;
 
 public interface IDAOProductes {
 
-    public void setStock(producte p, int n);
+    public void setStock(Producte p, int n);
 
     public List getAll();
 
     public List getAllAmbStock();
 
-    public producte getProductePerNom(String nom);
+    public Producte getProductePerNom(String nom);
 
 //    public List getProductePerCategoria(String categoria);
 

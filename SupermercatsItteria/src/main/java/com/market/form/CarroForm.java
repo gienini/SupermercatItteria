@@ -1,4 +1,4 @@
-package com.mkyong.common.form;
+package com.market.form;
 
 
 import org.apache.struts.validator.ValidatorForm;

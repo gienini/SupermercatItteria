@@ -16,6 +16,52 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `nomproducte` varchar(50) DEFAULT NULL,
+  `idusuari` varchar(50) DEFAULT NULL,
+  `quantitat` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comandes`
+--
+
+DROP TABLE IF EXISTS `comandes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comandes` (
+  `idusuari` varchar(50) DEFAULT NULL,
+  `nomproducte` varchar(50) DEFAULT NULL,
+  `quantitat` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comandes`
+--
+
+LOCK TABLES `comandes` WRITE;
+/*!40000 ALTER TABLE `comandes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comandes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `productes`
 --
 
@@ -23,9 +69,10 @@ DROP TABLE IF EXISTS `productes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productes` (
-  `URL` varchar(50) DEFAULT NULL,
+  `url` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
-  `preu` float DEFAULT NULL
+  `preu` float DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,4 +119,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-25 12:48:16
+-- Dump completed on 2014-02-25 13:33:29

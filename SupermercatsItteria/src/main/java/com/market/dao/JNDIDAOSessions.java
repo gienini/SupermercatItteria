@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -69,10 +70,7 @@ public class JNDIDAOSessions implements IDAOSessions {
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-
         }
-
         return retorn;
     }
 
@@ -83,11 +81,9 @@ public class JNDIDAOSessions implements IDAOSessions {
         if (compte_bancari != null) {
             pagat = 1;
         }
-        Sessio retorn = new Sessio();
         ResultSet rs = null;
         Connection con = ConnectionStatic.getConnection();
 
-      
         try {
 
             // Comprovacio, existeixen comandes guardades per aquest usuari?
@@ -103,28 +99,51 @@ public class JNDIDAOSessions implements IDAOSessions {
                 ps.executeUpdate();
             }
             // Buidem la comanda a la BBDD
-            Set<Producte> productes = s.getCarrito().keySet();
+            Iterator<Producte> productes = s.getCarrito().keySet().iterator();
             int valor = 0;
-            for (Producte clave : productes) {
-                // Aconseguim el valor per a la clau iterada
-                valor = s.getCarrito().get(clave);
-                //Comprovem la disponibilitat de stocks
-
-                ps = con.prepareStatement("SELECT stock FROM productes WHERE nom='"+clave+"';");
-                rs = ps.executeQuery();
-                rs.next();
-                if (valor>rs.getInt(1)){
-                    //Retornem false quan no hi han prou stocks
+            // Comprovem la disponibilitat de stocks
+            // Construim una llista de noms de productes
+            String whereIn = "'";
+            String nom;
+            while ((nom = productes.next().getNom()) != null) {
+                whereIn = whereIn + nom + "'";
+                if (productes.hasNext()) {
+                    whereIn = whereIn + ", '";
+                }
+            }
+            // Consultem a la BD els stocks disponibles
+            ps = con.prepareStatement("SELECT stock, nom FROM productes WHERE nom IN ("
+                    + whereIn + ");");
+            rs = ps.executeQuery();
+            // Els comparem amb la comanda que volem entrar
+            while (rs.next()) {
+                if (rs.getInt(1) < s.getCarrito().get(rs.getString(2))) {
+                    // Si no hi ha prou stock retornem false
                     return false;
                 }
-                
+            }
+            Set<Producte> setProductes = s.getCarrito().keySet();
+            // Actualitzem els stocks
+            for (Producte clave : setProductes) {
+                // Aconseguim el valor per a la clau iterada
+                valor = s.getCarrito().get(clave);
+                ps = con.prepareStatement("SELECT stock FROM productes WHERE nom='"
+                        + clave + "';");
+                rs = ps.executeQuery();
+                rs.next();
+                if (valor > rs.getInt(1)) {
+                    // Retornem false quan no hi han prou stocks
+                    return false;
+                }
+
                 ps = con.prepareStatement("INSERT INTO comandes VALUES('"
                         + s.getIdComanda() + "', '" + s.getNick() + "', '"
                         + clave.getNom() + "', " + valor + ", " + pagat + ");");
                 ps.executeUpdate();
             }
-            
-            con.close();rs.close();
+
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

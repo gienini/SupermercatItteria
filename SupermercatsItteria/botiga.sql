@@ -82,10 +82,12 @@ DROP TABLE IF EXISTS `productes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `preu` float DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL
+  `sotck` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -134,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-26 10:15:04
+-- Dump completed on 2014-02-26 10:56:02

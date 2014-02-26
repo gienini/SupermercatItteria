@@ -3,6 +3,7 @@ package com.market.DAO;
 import java.util.List;
 
 import com.market.VO.Sessio;
+import com.market.VO.Usuari;
 
 /**
  * 
@@ -11,8 +12,7 @@ import com.market.VO.Sessio;
  */
 public interface IDAOSessions {
 
-    public void addComanda(Sessio s);
+    public Sessio getSessio(Usuari u);
 
-    public List getAll();
-
+    public boolean populateDB(Sessio s, String compte_bancari);
 }

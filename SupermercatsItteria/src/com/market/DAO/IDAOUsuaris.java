@@ -14,8 +14,8 @@ public interface IDAOUsuaris {
      /**
       * Comprova si la combinacio d'usuari i contrasenya existeixen a la BBDD, existeix un constructor de Usuari especific per aquesta tasca
       * @param Combinacio d'usuari i contrasenya
-      * @return confirmacio
+      * @return l'usuari logejat
       */
-     public boolean isLogin(Usuari u);
+     public Usuari isLogin(Usuari u);
 
 }

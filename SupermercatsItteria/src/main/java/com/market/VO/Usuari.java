@@ -5,6 +5,7 @@ public class Usuari {
 	private String nick;
 	private String nom;
 	private String pass;
+	private String pass2;
 	private int edat;
 	private String email;
 	private int telefon;
@@ -59,6 +60,16 @@ public void setPass(String pass)
 	this.pass = pass;
 }
 
+//-------------------------------------------------
+//get i set pass2
+//-------------------------------------------------
+public String getPass2() {
+	return pass2;
+}
+
+public void setPass2(String pass2) {
+	this.pass2 = pass2;
+}
 //-------------------------------------------------
 //get i set edat
 //-------------------------------------------------

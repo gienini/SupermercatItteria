@@ -6,7 +6,7 @@
 <struts-config>
 
 	<form-beans>
-		<form-bean name="userForm" type="Beans.UserForm" />
+		<form-bean name="usuari" type="com.market.VO.Usuari" />
 		<form-bean name="LoginForm" type="Beans.LoginForm" />
 	</form-beans>
 
@@ -23,7 +23,7 @@
 		<action path="/LoginUserPage" type="org.apache.struts.actions.ForwardAction"
 			parameter="/Login.jsp" />
 
-		<action path="/Register" type="Beans.UserAction" name="userForm"
+		<action path="/Register" type="com.market.action.UserAction" name="usuari"
 			input="/RegisterUser.jsp">
 
 			<forward name="success" path="/ThanksYou.jsp" />

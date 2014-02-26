@@ -5,8 +5,8 @@
 
 <form-validation>
 	<formset>
-		<form name="userForm">
-			<field property="username" depends="required,maxlength,minlength,mask">
+		<form name="usuari">
+			<field property="nick" depends="required,maxlength,minlength,mask">
 
 				<msg name="required" key="err.user.username.required" />
 				<msg name="maxlength" key="err.user.username.length" />
@@ -36,7 +36,7 @@
 					<var-value>^[a-zA-Z0-9-_]*$</var-value>
 				</var>
 			</field>
-			<field property="name" depends="required,maxlength,minlength,mask">
+			<field property="nom" depends="required,maxlength,minlength,mask">
 
 				<msg name="required" key="err.user.name.required" />
 				<msg name="maxlength" key="err.user.name.length" />
@@ -66,7 +66,7 @@
 					<var-value>^[a-zA-Z0-9-_]*$</var-value>
 				</var>
 			</field>
-			<field property="age" depends="required,integer,intRange">
+			<field property="edat" depends="required,integer,intRange">
 
 				<msg name="required" key="err.user.age.required" />
 				<msg name="integer" key="err.user.age.integer" />
@@ -86,7 +86,7 @@
 				</var>
 			</field>
 
-			<field property="pwd" depends="required,maxlength,minlength,mask">
+			<field property="pass" depends="required,maxlength,minlength,mask">
 
 				<msg name="required" key="err.user.pwd.required" />
 				<msg name="maxlength" key="err.user.pwd.length" />
@@ -117,14 +117,14 @@
 				</var>
 			</field>
 
-			<field property="pwd2" depends="validwhen">
+			<field property="pass2" depends="validwhen">
 
 				<msg name="validwhen" key="err.user.pwd2.notmatch" />
 
 				<var>
 					<var-name>test</var-name>
 					<var-value>
-						(pwd == *this*)
+						(pass == *this*)
 					</var-value>
 				</var>
 			</field>
@@ -134,12 +134,12 @@
 				<msg name="email" key="err.user.email.invalid" />
 			</field>
 
-			<field property="usuari" depends="required">
-				<msg name="required" key="err.user.usuari.required" />
-			</field>
-			<field property="clau" depends="required">
-				<msg name="requide" key="err.user.clau.required" />
-			</field>
+<!-- 			<field property="usuari" depends="required"> -->
+<!-- 				<msg name="required" key="err.user.usuari.required" /> -->
+<!-- 			</field> -->
+<!-- 			<field property="clau" depends="required"> -->
+<!-- 				<msg name="requide" key="err.user.clau.required" /> -->
+<!-- 			</field> -->
 
 		</form>
 	</formset>

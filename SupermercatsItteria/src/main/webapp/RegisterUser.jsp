@@ -16,25 +16,25 @@
 	<html:form action="/Register">
 		<br />
 		<bean:message key="label.user.username" /> : 
-<html:text property="username" size="20" />
+<html:text property="nick" size="20" />
 		<br />
 		<bean:message key="label.user.name" />
-<html:text property="name" size="20" />
+<html:text property="nom" size="20" />
 		<br />
 		<bean:message key="label.user.age" />
-<html:text property="age" size="20" />
+<html:text property="edat" size="20" />
 		<br/>
 		<bean:message key="label.user.pwd" /> : 
-<html:password property="pwd" size="20" />
+<html:password property="pass" size="20" />
 		<br />
 		<bean:message key="label.user.pwd2" /> : 
-<html:password property="pwd2" size="20" />
+<html:password property="pass2" size="20" />
 		<br />
 		<bean:message key="label.user.email" /> : 
 <html:text property="email" size="20" />
 		<br />
 		<bean:message key="label.user.telephone" /> : 
-<html:text property="telephone" size="20" />
+<html:text property="telefon" size="20" />
 		<br />
 		<bean:message key="label.user.compteb" /> : 
 <html:text property="compteb" size="20" />

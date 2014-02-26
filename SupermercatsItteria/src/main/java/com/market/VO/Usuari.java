@@ -1,101 +1,127 @@
 package com.market.VO;
 
-public class Usuari {
-	
-	private String nick;
-	private String nom;
-	private String pass;
-	private int edat;
-	private String email;
-	private int telefon;
+import org.apache.struts.validator.ValidatorForm;
 
+public class Usuari extends ValidatorForm {
 
-// -------------------------------------------------------
-//  Contructor Usuari
-// -------------------------------------------------------
+    private String nick;
+    private String nom;
 
-	public Usuari(String nick, String pass) {
-		super();
-		this.nick = nick;
-		this.pass = pass;
-	}
-	
+    public Usuari() {
+        super();
+    }
 
-//-------------------------------------------------
-//get i set nick
-//-------------------------------------------------
+    public Usuari(String nick, String nom, String pass, String pass2, int edat,
+            String email, String telefon, String compteb) {
+        super();
+        this.nick = nick;
+        this.nom = nom;
+        this.pass = pass;
+        this.pass2 = pass2;
+        this.edat = edat;
+        this.email = email;
+        this.telefon = telefon;
+        this.compteb = compteb;
+    }
 
-public String getNick() {
-	return nick;
-}
+    private String pass;
+    private String pass2;
+    private int edat;
+    private String email;
+    private String telefon;
+    private String compteb;
 
-public void setNick(String nick) {
-	this.nick = nick;
-}
+    // -------------------------------------------------------
+    // Contructor Usuari
+    // -------------------------------------------------------
 
-//-------------------------------------------------
-//  get i set nom
-//-------------------------------------------------
-public String getNom()
-{
-return nom;
-}
+    public Usuari(String nick, String pass) {
+        super();
+        this.nick = nick;
+        this.pass = pass;
+    }
 
-public void setNom(String nom)
-{
-	this.nom = nom;
-}
+    // -------------------------------------------------
+    // get i set nick
+    // -------------------------------------------------
 
-//-------------------------------------------------
-//get i set pass
-//-------------------------------------------------
-public String getPass()
-{
-return pass;
-}
+    public String getNick() {
+        return nick;
+    }
 
-public void setPass(String pass)
-{
-	this.pass = pass;
-}
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
 
-//-------------------------------------------------
-//get i set edat
-//-------------------------------------------------
-public int getEdat()
-{
-return edat;
-}
+    // -------------------------------------------------
+    // get i set nom
+    // -------------------------------------------------
+    public String getNom() {
+        return nom;
+    }
 
-public void setEdat(int edat)
-{
-	this.edat = edat;
-}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-//-------------------------------------------------
-//get i set email
-//-------------------------------------------------
-public String getEmail()
-{
-return email;
-}
+    // -------------------------------------------------
+    // get i set pass
+    // -------------------------------------------------
+    public String getPass() {
+        return pass;
+    }
 
-public void setEmail(String email)
-{
-	this.email = email;
-}
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
-//-------------------------------------------------
-//get i set telefon
-//-------------------------------------------------
-public int getTelefon()
-{
-return telefon;
-}
+    // -------------------------------------------------
+    // get i set edat
+    // -------------------------------------------------
+    public int getEdat() {
+        return edat;
+    }
 
-public void setTelefon(int telefon)
-{
-	this.telefon = telefon;
-}
+    public void setEdat(int edat) {
+        this.edat = edat;
+    }
+
+    // -------------------------------------------------
+    // get i set email
+    // -------------------------------------------------
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // -------------------------------------------------
+    // get i set telefon
+    // -------------------------------------------------
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    public String getPass2() {
+        return pass2;
+    }
+
+    public void setPass2(String pass2) {
+        this.pass2 = pass2;
+    }
+
+    public String getCompteb() {
+        return compteb;
+    }
+
+    public void setCompteb(String compteb) {
+        this.compteb = compteb;
+    }
 
 }

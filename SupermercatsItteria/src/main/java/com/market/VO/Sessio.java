@@ -4,50 +4,47 @@ import java.util.Map;
 
 public class Sessio {
 
+    private String nick;
+    private Map<Producte, Integer> carrito;
+    private int idComanda;
 
-private String nick;
-private int quantitat;
-private Map<Producte, Integer> carrito;
+    public Sessio() {
+        super();
+    }
 
-//-------------------------------------------------
-// Constructor
-//-------------------------------------------------
+    public Sessio(String nick, Map<Producte, Integer> carrito, int idComanda) {
+        super();
+        this.nick = nick;
+        this.carrito = carrito;
+        this.idComanda = idComanda;
+    }
 
-public Sessio(String nick, int quantitat, Map<Producte, Integer> carrito) {
-	super();
-	this.nick = nick;
-	this.quantitat = quantitat;
-	this.carrito = carrito;
-}
+    public String getNick() {
+        return nick;
+    }
 
-//-------------------------------------------------
-// get i set
-//-------------------------------------------------
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
 
-public String getNick() {
-	return nick;
-}
+    public Map<Producte, Integer> getCarrito() {
+        return carrito;
+    }
 
-public void setNick(String nick) {
-	this.nick = nick;
-}
+    public void setCarrito(Map<Producte, Integer> carrito) {
+        this.carrito = carrito;
+    }
 
-public int getQuantitat() {
-	return quantitat;
-}
+    public int getIdComanda() {
+        return idComanda;
+    }
 
-public void setQuantitat(int quantitat) {
-	this.quantitat = quantitat;
-}
+    public void setIdComanda(int idComanda) {
+        this.idComanda = idComanda;
+    }
 
-public Map<Producte, Integer> getCarrito() {
-	return carrito;
-}
-
-public void setCarrito(Map<Producte, Integer> carrito) {
-	this.carrito = carrito;
-}
-
+    // -------------------------------------------------
+    // get i set
+    // -------------------------------------------------
 
 }
-

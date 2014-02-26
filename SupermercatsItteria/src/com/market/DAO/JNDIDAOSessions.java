@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.market.VO.Producte;
 import com.market.VO.Sessio;
@@ -77,8 +78,58 @@ public class JNDIDAOSessions implements IDAOSessions {
 
     @Override
     public boolean populateDB(Sessio s, String compte_bancari) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 
+        int pagat = 0;
+        if (compte_bancari != null) {
+            pagat = 1;
+        }
+        Sessio retorn = new Sessio();
+        ResultSet rs = null;
+        Connection con = ConnectionStatic.getConnection();
+
+      
+        try {
+
+            // Comprovacio, existeixen comandes guardades per aquest usuari?
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT idusuari, pagat FROM comandes WHERE idusuari='"
+                            + s.getNick() + "' AND pagat=0;");
+            rs = ps.executeQuery();
+            // Si existeix una comanda guardada la eliminem i en posem una de
+            // nova
+            if (rs.absolute(1)) {
+                ps = con.prepareStatement("DELETE FROM comandes WHERE idusuari='"
+                        + s.getNick() + "' AND pagat=0");
+                ps.executeUpdate();
+            }
+            // Buidem la comanda a la BBDD
+            Set<Producte> productes = s.getCarrito().keySet();
+            int valor = 0;
+            for (Producte clave : productes) {
+                // Aconseguim el valor per a la clau iterada
+                valor = s.getCarrito().get(clave);
+                //Comprovem la disponibilitat de stocks
+
+                ps = con.prepareStatement("SELECT stock FROM productes WHERE nom='"+clave+"';");
+                rs = ps.executeQuery();
+                rs.next();
+                if (valor>rs.getInt(1)){
+                    //Retornem false quan no hi han prou stocks
+                    return false;
+                }
+                
+                ps = con.prepareStatement("INSERT INTO comandes VALUES('"
+                        + s.getIdComanda() + "', '" + s.getNick() + "', '"
+                        + clave.getNom() + "', " + valor + ", " + pagat + ");");
+                ps.executeUpdate();
+            }
+            
+            con.close();rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+    }
 }

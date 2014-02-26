@@ -134,12 +134,7 @@
 				<msg name="email" key="err.user.email.invalid" />
 			</field>
 
-			<field property="usuari" depends="required">
-				<msg name="required" key="err.user.usuari.required" />
-			</field>
-			<field property="clau" depends="required">
-				<msg name="requide" key="err.user.clau.required" />
-			</field>
+
 
 		</form>
 	</formset>

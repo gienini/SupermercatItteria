@@ -39,6 +39,8 @@ public class UserAction extends Action{
 		init();
 		
 		try {
+			
+			
 			Statement stmt = conn.createStatement();
 			sql = "INSERT INTO usuaris SET nick='" + lf.getUsername()
 					+ "',edat='" + lf.getAge() + "',email='"

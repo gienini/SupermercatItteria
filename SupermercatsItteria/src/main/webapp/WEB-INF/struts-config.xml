@@ -26,13 +26,22 @@
 		<action path="/Register" type="Beans.UserAction" name="userForm"
 			input="/RegisterUser.jsp">
 
-			<forward name="success" path="/ThanksYou.jsp" />
+			<forward name="success" path="/RegisterValidation.jsp" />
 			<forward name="error" path="/RegisterUser.jsp" />
 
 		</action>
 
 		<action path="/RegisterUserPage" type="org.apache.struts.actions.ForwardAction"
 			parameter="/RegisterUser.jsp" />
+			
+		<action path="/Validation" type="Beans.UserValidationAction" name="userForm"
+			input="/RegisterValidation.jsp">
+
+			<forward name="success" path="/ThanksYou.jsp" />
+			<forward name="error" path="/RegisterUser.jsp" />
+
+
+		</action>
 
 	</action-mappings>
 

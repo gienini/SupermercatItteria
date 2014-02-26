@@ -7,6 +7,6 @@
 </head>
  
 <body>
-    <h2>Hola!</h2><br>
+    <h2>Hola! <%= session.getAttribute("usuari"). %></h2><br>
 </body>
 </html>

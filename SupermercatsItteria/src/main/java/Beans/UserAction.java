@@ -53,7 +53,7 @@ public class UserAction extends Action{
     	}
     	if(ok1==1)
     	{
-		
+    	
 			HttpSession sessio1= request.getSession();
 			sessio1.setAttribute("username", lf.getUsername());
 			sessio1.setAttribute("name", lf.getName());
@@ -69,28 +69,7 @@ public class UserAction extends Action{
     		return mapping.findForward("error");
     	}
 		
-		/*UserForm lf=(UserForm) form;
-		
-		init();
-		
-		try {
-			
-			
-			Statement stmt = conn.createStatement();
-			sql = "INSERT INTO usuaris SET nick='" + lf.getUsername()
-					+ "',edat='" + lf.getAge() + "',email='"
-					+ lf.getEmail() + "',telefon='"
-					+ lf.getTelephone() + "',pass='"+lf.getPwd()+"',nom='"+lf.getName()+"',compteb='"+lf.getCompteb()+"';";
-			stmt.executeUpdate(sql);
-			conn.close();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return mapping.findForward("error");
-		}
-		return mapping.findForward("success");
-		*/
+
     }
 	
 	 public ArrayList<String> CarregarNomsUsuaris(){

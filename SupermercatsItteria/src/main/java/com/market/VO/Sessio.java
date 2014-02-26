@@ -13,7 +13,7 @@ private Map<Producte, Integer> carrito;
 // Constructor
 //-------------------------------------------------
 
-public Sessio(String nick, int quantitat, Map<Producte, Integer> carrito) {
+public Sessio(String nick, Map<Producte, Integer> carrito) {
 	super();
 	this.nick = nick;
 	this.quantitat = quantitat;

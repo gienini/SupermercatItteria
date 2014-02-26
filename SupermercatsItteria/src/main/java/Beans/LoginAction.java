@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,9 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import com.market.VO.Producte;
+import com.market.VO.Sessio;
 
 
 
@@ -60,8 +65,11 @@ public class LoginAction extends Action {
     	}
     	if(ok2==1)
     	{
-    		HttpSession sessio= request.getSession();
-    		sessio.setAttribute("usuari", lf.getUsuari());
+  
+    		Map<Producte,Integer> m=new HashMap<Producte,Integer>();
+    		Sessio s=new Sessio(lf.getUsuari(),m);
+    				HttpSession sessio= request.getSession();
+    		sessio.setAttribute("usuari", s);
     		return mapping.findForward("success");
     	}else{
     		HttpSession sessioError = request.getSession();

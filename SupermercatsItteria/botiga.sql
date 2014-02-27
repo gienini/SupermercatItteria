@@ -16,6 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `botiga`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `botiga` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `botiga`;
+
+--
 -- Table structure for table `categories`
 --
 
@@ -46,12 +54,12 @@ DROP TABLE IF EXISTS `comandes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comandes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idusuari` varchar(50) DEFAULT NULL,
-  `nomproducte` varchar(50) DEFAULT NULL,
+  `id` int(11) NOT NULL DEFAULT '0',
+  `idusuari` varchar(50) NOT NULL DEFAULT '',
+  `nomproducte` varchar(50) NOT NULL DEFAULT '',
   `quantitat` int(11) DEFAULT NULL,
   `pagat` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`idusuari`,`nomproducte`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -61,6 +69,7 @@ CREATE TABLE `comandes` (
 
 LOCK TABLES `comandes` WRITE;
 /*!40000 ALTER TABLE `comandes` DISABLE KEYS */;
+INSERT INTO `comandes` VALUES (1,'fran','manzana',10,0),(1,'fran','pera',15,0);
 /*!40000 ALTER TABLE `comandes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,9 +82,10 @@ DROP TABLE IF EXISTS `productes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productes` (
   `url` varchar(50) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL DEFAULT '',
   `preu` float DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL
+  `stock` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,6 +95,7 @@ CREATE TABLE `productes` (
 
 LOCK TABLES `productes` WRITE;
 /*!40000 ALTER TABLE `productes` DISABLE KEYS */;
+INSERT INTO `productes` VALUES (' ','manzana',10,140),(' ','pera',10,85);
 /*!40000 ALTER TABLE `productes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,12 +107,14 @@ DROP TABLE IF EXISTS `usuaris`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuaris` (
-  `nick` varchar(50) DEFAULT NULL,
+  `nick` varchar(50) NOT NULL DEFAULT '',
+  `pass` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `edat` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `telefon` int(11) DEFAULT NULL,
-  `compteb` varchar(50) DEFAULT NULL
+  `telefon` varchar(50) DEFAULT NULL,
+  `compteb` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`nick`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -111,6 +124,7 @@ CREATE TABLE `usuaris` (
 
 LOCK TABLES `usuaris` WRITE;
 /*!40000 ALTER TABLE `usuaris` DISABLE KEYS */;
+INSERT INTO `usuaris` VALUES ('fran','1234','fran',12,'asasas','123513','compte');
 /*!40000 ALTER TABLE `usuaris` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -123,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-25 15:34:29
+-- Dump completed on 2014-02-27 11:58:17

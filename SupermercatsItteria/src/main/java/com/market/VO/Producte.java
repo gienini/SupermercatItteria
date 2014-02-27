@@ -36,6 +36,25 @@ public class Producte {
         this.nom = nom;
     }
 
+    @Override
+    public int hashCode() {
+        return nom.length();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Producte)) {
+            return false;
+        }
+        Producte p2 = (Producte) obj;
+
+        return p2.nom.equals(this.nom);
+    }
+
     // -------------------------------------------------------
     // get i set preu
     // -------------------------------------------------------

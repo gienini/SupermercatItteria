@@ -8,6 +8,7 @@
 	<form-beans>
 		<form-bean name="usuari" type="com.market.VO.Usuari" />
 		<form-bean name="LoginForm" type="com.market.VO.LoginBean" />
+		<form-bean name="CarroForm" type="com.market.form.CarroForm" />
 	</form-beans>
 
 	<action-mappings>
@@ -15,7 +16,7 @@
 	
 		<action path="/Login" type="com.market.action.LoginAction" name="LoginForm"
 			input="/Login.jsp">
-			<forward name="success" path="/Welcome.jsp" />
+			<forward name="success" path="/mostrarproductes.jsp" />
 			<forward name="error" path="/Login.jsp" />
 
 		</action>
@@ -33,6 +34,13 @@
 
 		<action path="/RegisterUserPage" type="org.apache.struts.actions.ForwardAction"
 			parameter="/RegisterUser.jsp" />
+			
+			    <action input="/mostrarproductes.jsp" name="CarroForm" path ="/carro"
+			scope="session" type="com.market.action.CarroAction">
+        		<forward name="success" path="/mostrarproductes.jsp"/>
+        </action>
+        
+   
 
 	</action-mappings>
 

@@ -16,8 +16,9 @@ public class JNDIDAOProductes implements IDAOProductes {
         Connection con = ConnectionStatic.getConnection();
         try {
             PreparedStatement ps = con
-                    .prepareStatement("UPDATE productes SET stock=stock-"+n+" WHERE nom='"+p.getNom()+"';");
-            ps.executeQuery();
+                    .prepareStatement("UPDATE productes SET stock=stock-" + n
+                            + " WHERE nom='" + p.getNom() + "';");
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,12 +38,12 @@ public class JNDIDAOProductes implements IDAOProductes {
             rs = ps.executeQuery();
             Producte p = new Producte(null);
             while (rs.next()) {
-                p = new Producte(rs.getString(1), rs.getInt(3), rs.getInt(4),
-                        rs.getString(2));
+                p = new Producte(rs.getString(2), rs.getFloat(3), rs.getInt(4),
+                        rs.getString(1));
                 retorn.add(p);
-                rs.close();
-                con.close();
             }
+            rs.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,12 +62,12 @@ public class JNDIDAOProductes implements IDAOProductes {
             rs = ps.executeQuery();
             Producte p = new Producte(null);
             while (rs.next()) {
-                p = new Producte(rs.getString(1), rs.getInt(3), rs.getInt(4),
-                        rs.getString(2));
+                p = new Producte(rs.getString(2), rs.getFloat(3), rs.getInt(4),
+                        rs.getString(1));
                 retorn.add(p);
-                rs.close();
-                con.close();
             }
+            rs.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

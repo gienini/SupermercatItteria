@@ -45,6 +45,10 @@ public class JNDIDAOSessions implements IDAOSessions {
                 retorn.setNick(u.getNick());
                 carroR = new HashMap<Producte, Integer>();
                 carroR.put(new Producte(rs.getString(3)), rs.getInt(4));
+                System.out.println("PRODUCTE: " + rs.getString(3) + " VALOR: "
+                        + rs.getInt(4));
+                System.out.println("HASHMAP"
+                        + carroR.get(new Producte("manzana")));
                 while (rs.next()) {
                     carroR.put(new Producte(rs.getString(3)), rs.getInt(4));
                 }
@@ -85,6 +89,11 @@ public class JNDIDAOSessions implements IDAOSessions {
         Connection con = ConnectionStatic.getConnection();
         Set<Producte> setProductes = null;
         int valor = 0;
+        // Comprovacio, existeix una comanda en aquesta sessio?
+        if (s.getCarrito().entrySet().isEmpty()) {
+            return false;
+
+        }
         try {
 
             // Comprovacio, existeixen comandes guardades per aquest usuari?
@@ -109,20 +118,23 @@ public class JNDIDAOSessions implements IDAOSessions {
 
                 // Construim una llista de noms de productes
                 String whereIn = "'";
-                String nom;
-                while ((nom = productes.next().getNom()) != null) {
-                    whereIn = whereIn + nom + "'";
-                    if (productes.hasNext()) {
-                        whereIn = whereIn + ", '";
-                    }
+                String nom = "";
+
+                while (productes.hasNext()) {
+                    nom = productes.next().getNom();
+                    whereIn = whereIn + nom + "', '";
                 }
+                whereIn = whereIn.substring(0, whereIn.length() - 3);
                 // Consultem a la BD els stocks disponibles
+
                 ps = con.prepareStatement("SELECT stock, nom FROM productes WHERE nom IN ("
                         + whereIn + ");");
                 rs = ps.executeQuery();
                 // Els comparem amb la comanda que volem entrar
                 while (rs.next()) {
-                    if (rs.getInt(1) < s.getCarrito().get(rs.getString(2))) {
+
+                    if (rs.getInt(1) < s.getCarrito().get(
+                            new Producte(rs.getString(2)))) {
                         // Si no hi ha prou stock retornem false
                         return false;
                     }
@@ -132,7 +144,7 @@ public class JNDIDAOSessions implements IDAOSessions {
                 for (Producte clave : setProductes) {
                     valor = s.getCarrito().get(clave);
                     JNDIDAOProductes DAOProductes = new JNDIDAOProductes();
-                    DAOProductes.setStock(clave, -valor);
+                    DAOProductes.setStock(clave, valor);
 
                 }
             }// FI actualitzacio stocks

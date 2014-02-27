@@ -30,7 +30,7 @@ public interface IDAOSessions {
      * @param compte_bancari
      *            introduim null per comandes a mitjes o una String quan la
      *            comanda ha acabat
-     * @return
+     * @return true si tot ha anat be i false si no hi ha prou stock o la comanda esta buida
      */
     public boolean populateDB(Sessio s, String compte_bancari);
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.market.VO.LoginBean;
 import com.market.VO.Usuari;
 
 public class JNDIDAOUsuaris implements IDAOUsuaris {
@@ -31,15 +32,15 @@ public class JNDIDAOUsuaris implements IDAOUsuaris {
     }
 
     @Override
-    public boolean isLogin(Usuari u) {
+    public boolean isLogin(LoginBean u) {
         Connection con = ConnectionStatic.getConnection();
-        if (u.getNick() == null || u.getPass() == null) {
+        if (u.getUsuari() == null || u.getClau() == null) {
             return false;
         }
         try {
             PreparedStatement ps = con
                     .prepareStatement("SELECT COUNT(*) FROM usuaris WHERE nick='"
-                            + u.getNick() + "' AND pass='" + u.getPass() + "';");
+                            + u.getUsuari() + "' AND pass='" + u.getClau() + "';");
             ResultSet rs = ps.executeQuery();
             rs.next();
             if (rs.getInt(1)==1){

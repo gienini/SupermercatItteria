@@ -1,5 +1,6 @@
 package com.market.dao;
 
+import com.market.VO.LoginBean;
 import com.market.VO.Usuari;
 
 public interface IDAOUsuaris {
@@ -20,6 +21,6 @@ public interface IDAOUsuaris {
      *            "nick" i "pass"
      * @return true si la combinacio existeix, false si no
      */
-    public boolean isLogin(Usuari u);
+    public boolean isLogin(LoginBean u);
 
 }

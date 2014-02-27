@@ -7,6 +7,16 @@ public class Usuari extends ValidatorForm {
     private String nick;
     private String nom;
 
+    private String pass;
+    private String pass2;
+    private int edat;
+    private String email;
+    private String telefon;
+    private String compteb;
+
+    // -------------------------------------------------------
+    // Contructor Usuari
+    // -------------------------------------------------------
     public Usuari() {
         super();
     }
@@ -23,17 +33,6 @@ public class Usuari extends ValidatorForm {
         this.telefon = telefon;
         this.compteb = compteb;
     }
-
-    private String pass;
-    private String pass2;
-    private int edat;
-    private String email;
-    private String telefon;
-    private String compteb;
-
-    // -------------------------------------------------------
-    // Contructor Usuari
-    // -------------------------------------------------------
 
     public Usuari(String nick, String pass) {
         super();

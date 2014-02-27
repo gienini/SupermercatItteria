@@ -6,10 +6,10 @@
 <html>
 <head>
 <title>Welcome</title>
-</head>
+</head> 
 <%! Sessio s = null; %>
  <% s=(Sessio)session.getAttribute("sessio");
- out.print(s.getCarrito().get(new Producte("pera")));%>
+ out.print(s.getCarrito().get(new Producte("pera"))); %>
 <body>
     <h2>Hola!</h2><br>
 </body>

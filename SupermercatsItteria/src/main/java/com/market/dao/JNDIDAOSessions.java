@@ -83,7 +83,8 @@ public class JNDIDAOSessions implements IDAOSessions {
         }
         ResultSet rs = null;
         Connection con = ConnectionStatic.getConnection();
-
+        Set<Producte> setProductes = null;
+        int valor = 0;
         try {
 
             // Comprovacio, existeixen comandes guardades per aquest usuari?
@@ -98,43 +99,49 @@ public class JNDIDAOSessions implements IDAOSessions {
                         + s.getNick() + "' AND pagat=0");
                 ps.executeUpdate();
             }
-            // Buidem la comanda a la BBDD
-            Iterator<Producte> productes = s.getCarrito().keySet().iterator();
-            int valor = 0;
-            // Comprovem la disponibilitat de stocks
-            // Construim una llista de noms de productes
-            String whereIn = "'";
-            String nom;
-            while ((nom = productes.next().getNom()) != null) {
-                whereIn = whereIn + nom + "'";
-                if (productes.hasNext()) {
-                    whereIn = whereIn + ", '";
+            // COMENÇAMENT comprovacions de stocks
+            if (compte_bancari != null) {
+
+                // Buidem la comanda a la BBDD
+                Iterator<Producte> productes = s.getCarrito().keySet()
+                        .iterator();
+                valor = 0;
+
+                // Construim una llista de noms de productes
+                String whereIn = "'";
+                String nom;
+                while ((nom = productes.next().getNom()) != null) {
+                    whereIn = whereIn + nom + "'";
+                    if (productes.hasNext()) {
+                        whereIn = whereIn + ", '";
+                    }
                 }
-            }
-            // Consultem a la BD els stocks disponibles
-            ps = con.prepareStatement("SELECT stock, nom FROM productes WHERE nom IN ("
-                    + whereIn + ");");
-            rs = ps.executeQuery();
-            // Els comparem amb la comanda que volem entrar
-            while (rs.next()) {
-                if (rs.getInt(1) < s.getCarrito().get(rs.getString(2))) {
-                    // Si no hi ha prou stock retornem false
-                    return false;
+                // Consultem a la BD els stocks disponibles
+                ps = con.prepareStatement("SELECT stock, nom FROM productes WHERE nom IN ("
+                        + whereIn + ");");
+                rs = ps.executeQuery();
+                // Els comparem amb la comanda que volem entrar
+                while (rs.next()) {
+                    if (rs.getInt(1) < s.getCarrito().get(rs.getString(2))) {
+                        // Si no hi ha prou stock retornem false
+                        return false;
+                    }
                 }
-            }
-            Set<Producte> setProductes = s.getCarrito().keySet();
-            // Actualitzem els stocks
+                setProductes = s.getCarrito().keySet();
+                // Actualitzem els stocks
+                for (Producte clave : setProductes) {
+                    valor = s.getCarrito().get(clave);
+                    JNDIDAOProductes DAOProductes = new JNDIDAOProductes();
+                    DAOProductes.setStock(clave, -valor);
+
+                }
+            }// FI actualitzacio stocks
+
+            // Actualitzem la taula de comandes
+            setProductes = s.getCarrito().keySet();
             for (Producte clave : setProductes) {
                 // Aconseguim el valor per a la clau iterada
                 valor = s.getCarrito().get(clave);
-                ps = con.prepareStatement("SELECT stock FROM productes WHERE nom='"
-                        + clave + "';");
-                rs = ps.executeQuery();
-                rs.next();
-                if (valor > rs.getInt(1)) {
-                    // Retornem false quan no hi han prou stocks
-                    return false;
-                }
 
                 ps = con.prepareStatement("INSERT INTO comandes VALUES('"
                         + s.getIdComanda() + "', '" + s.getNick() + "', '"

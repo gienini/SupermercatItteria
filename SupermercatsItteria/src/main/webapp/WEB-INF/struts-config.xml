@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="usuari" type="com.market.VO.Usuari" />
+		<form-bean name="LoginForm" type="com.market.VO.LoginBean" />
+		<form-bean name="CarroForm" type="com.market.form.CarroForm" />
+	</form-beans>
+
+	<action-mappings>
+	
+	
+		<action path="/Login" type="com.market.action.LoginAction" name="LoginForm"
+			input="/Login.jsp">
+			<forward name="success" path="/mostrarproductes.jsp" />
+			<forward name="error" path="/Login.jsp" />
+
+		</action>
+			
+		<action path="/LoginUserPage" type="org.apache.struts.actions.ForwardAction"
+			parameter="/Login.jsp" />
+
+		<action path="/Register" type="com.market.action.UserAction" name="usuari"
+			input="/RegisterUser.jsp">
+
+			<forward name="success" path="/ThanksYou.jsp" />
+			<forward name="error" path="/RegisterUser.jsp" />
+
+		</action>
+
+		<action path="/RegisterUserPage" type="org.apache.struts.actions.ForwardAction"
+			parameter="/RegisterUser.jsp" />
+			
+			    <action input="/mostrarproductes.jsp" name="CarroForm" path ="/carro"
+			scope="session" type="com.market.action.CarroAction">
+        		<forward name="success" path="/mostrarproductes.jsp"/>
+        </action>
+        
+   
+
+	</action-mappings>
+
+	<message-resources parameter="propietats.user" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-user.xml" />
+	</plug-in>
+</struts-config>

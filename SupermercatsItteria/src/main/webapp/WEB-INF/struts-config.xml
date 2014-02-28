@@ -6,8 +6,9 @@
 <struts-config>
 
 	<form-beans>
-		<form-bean name="ContaForm" type="com.market.form.ContaForm" />
-		<form-bean name="Sessio" type="com.market.VO.Sessio" />
+	<form-bean name="ContaForm"
+			type="com.market.form.ContaForm" />
+			<form-bean name="Sessio" type="com.market.VO.Sessio" />
 		<form-bean name="usuari" type="com.market.VO.Usuari" />
 		<form-bean name="LoginForm" type="com.market.VO.LoginBean" />
 		<form-bean name="CarroForm" type="com.market.form.CarroForm" />

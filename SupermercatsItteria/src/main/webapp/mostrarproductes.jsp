@@ -20,6 +20,10 @@
 </head>
 <body>
 
+<%Sessio sessio = (Sessio)session.getAttribute("sessio"); %>
+
+<h1>Benvingut <%=sessio.getNick() %>!</h1>
+
 <br />
 		<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
 			<tbody>
@@ -42,11 +46,11 @@
 		                		
 		                		<html:form action="/carro.do">
 		                		
-		                			<td><html:text property="nom" value="<%=producte.getNom()%>" /></td>
+		                			<td><html:text  readonly="true" property="nom" value="<%=producte.getNom()%>" /></td>
 		                			
 		                			<td><html:text  property="quantitat" value="0" /></td>
 		                			
-		                			<td><html:text property="preu"  value="<%=String.valueOf(producte.getPreu()) %>"  /></td>
+		                			<td><html:text  readonly="true" property="preu"  value="<%=String.valueOf(producte.getPreu()) %>"  /></td>
 		                			
 		                			<html:hidden property="stock"  value="<%=String.valueOf(producte.getStock()) %>" />
 		                			
@@ -64,6 +68,7 @@
 			</tbody>
 		</table>
 		<br />
+		<jsp:include page="llistaCarret.jsp"></jsp:include>
 		
 		<html:link href="checkcarrito.jsp"> Continuar </html:link>
 

@@ -15,6 +15,11 @@
 	</form-beans>
 
 	<action-mappings>
+		<action path="/guardar" name="Sessio" validate="true"
+			input="/guardarComanda.jsp" type="com.market.action.GuardarAction">
+			<forward name="success" path="/index.jsp" />
+			<forward name="failure" path="/guardarComanda.jsp" />
+		</action>
 		<action path="/DeleteProduct" type="com.market.action.CarroLlistaAction"
 			name="CarroLlistaFrom" input="/mostrarproductes.jsp" validate="false">
 			<forward name="success" path="/mostrarproductes.jsp" />

@@ -16,6 +16,10 @@ body {
 background-color:#D8D8D8;
 
 }
+
+.imatge{
+width:150px;
+height:150px}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
@@ -64,7 +68,7 @@ background-color:#D8D8D8;
 		                			
 		                			<html:hidden property="url"  value="<%=producte.getUrl() %>"/>
 		                			
-		                			<td><html:image src="<%=producte.getUrl() %>"></html:image></td>
+		                			<td><html:image styleClass="imatge" src="<%=producte.getUrl() %>"></html:image></td>
 		                			
 		                			<td><html:submit value="Comprar" styleId="button" styleClass="btn btn-primary"/></td>
 		                			

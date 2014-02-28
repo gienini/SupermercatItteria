@@ -31,7 +31,7 @@ form {
 	<form action="mostrarproductes.jsp">
 		<input type="submit" value="modificar-la">
 	</form>
-	<form action="index.jsp">
+	<form action="guardar.do">
 		
 		<input type="submit" value="guardar-la">
 	</form>

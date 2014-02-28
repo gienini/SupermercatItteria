@@ -65,12 +65,12 @@ form {
 	<br></br>
 	<br></br>
 
-	<html:form action="formulariConta.jsp">
+	<form action="formulariConta.jsp">
 		<input type="submit" value="Modificar dades de pagament">
-	</html:form>
-	<form action="logout">
-		<input type="submit" value="Realitzar pagamanet">
 	</form>
+	<html:form action="logout">
+		<input type="submit" value="Realitzar pagamanet">
+	</html:form>
 	
 	
 

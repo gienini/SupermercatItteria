@@ -38,8 +38,6 @@ public class LoginAction extends Action {
                     lf.getUsuari(), lf.getClau()));
             HttpSession sessio = request.getSession();
             sessio.setAttribute("sessio", sessioBean);
-            
-            DAOSessions.populateDB(sessioBean, "compte");
             return mapping.findForward("success");
         }
         HttpSession sessioError = request.getSession();

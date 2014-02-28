@@ -42,7 +42,7 @@
 			scope="session" type="com.market.action.CarroAction">
         		<forward name="success" path="/mostrarproductes.jsp"/>
         </action>
-        <action path="/conta" name="ContaForm" validate="true" input="/checkcarrito.jsp"
+        <action path="/conta" name="ContaForm" validate="true" input="/formulariConta.jsp"
 			type="com.market.action.ContaAction">
 			<forward name="success" path="/confirmacioCompra.jsp" />
 			<forward name="failure" path="/formulariConta.jsp" />

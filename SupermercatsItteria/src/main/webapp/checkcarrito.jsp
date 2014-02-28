@@ -24,7 +24,7 @@ form {
 
 
 	Senyor
-	<c:out value="${hard.nick}" />
+	<c:out value="${sessio.nick}" />
 	la seva comanda es la seguent:
 	<br></br>
 

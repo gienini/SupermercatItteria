@@ -10,6 +10,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+<%@ include file="css/bootstrap.min.css" %>
+body {
+background-color:#D8D8D8;
+
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <%JNDIDAOProductes dades = new JNDIDAOProductes();
@@ -25,11 +32,12 @@
 <h1>Benvingut <%=sessio.getNick() %>!</h1>
 
 <br />
-		<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+		<table border="0" cellpadding="8" cellspacing="8" style="width: 500px;">
 			<tbody>
-			<tr>
+			<tr style="font-weight:bold;">
 			<td>Producte</td><td>Quantitat</td><td>Preu</td><td>Imatge</td>
 			</tr>
+	
 					<%
 					int i;
 					List<Producte> prod = new ArrayList<Producte>();
@@ -46,11 +54,11 @@
 		                		
 		                		<html:form action="/carro.do">
 		                		
-		                			<td><html:text  readonly="true" property="nom" value="<%=producte.getNom()%>" /></td>
+		                			<td><html:text  readonly="true" property="nom" style="border:none;background-color:transparent" value="<%=producte.getNom()%>" /></td>
 		                			
 		                			<td><html:text  property="quantitat" value="0" /></td>
 		                			
-		                			<td><html:text  readonly="true" property="preu"  value="<%=String.valueOf(producte.getPreu()) %>"  /></td>
+		                			<td><html:text  readonly="true" property="preu" style="border:none;background-color:transparent" value="<%=String.valueOf(producte.getPreu()) %>"  /></td>
 		                			
 		                			<html:hidden property="stock"  value="<%=String.valueOf(producte.getStock()) %>" />
 		                			
@@ -58,7 +66,7 @@
 		                			
 		                			<td><html:image src="<%=producte.getUrl() %>"></html:image></td>
 		                			
-		                			<td><html:submit value="Comprar"/></td>
+		                			<td><html:submit value="Comprar" styleId="button" styleClass="btn btn-primary"/></td>
 		                			
 		                		</html:form>
 		                		

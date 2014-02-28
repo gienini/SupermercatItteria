@@ -17,9 +17,10 @@
   %>
  
  	<h1>Carret de la compra</h1>
-	<table border="1" cellpadding=""1 cellspacing="1" style="width: 500px;">
+	<table border="0" cellpadding=""1 cellspacing="1" style="width: 500px;">
 		<tbody>
-		<tr><td>Producte</td><td>Quantitat</td><td>Imatge</td></tr>
+		
+		<tr S><td>Producte</td><td>Quantitat</td><td>Imatge</td></tr>
 	<%
 		//Llistem els keys del Map
 		Iterator it = carrito.entrySet().iterator();
@@ -35,7 +36,7 @@
 				<html:hidden property="stock" value="<%=String.valueOf(producte.getStock())%>" />
 				<html:hidden property="url" value="<%=producte.getUrl()%>"/>
 				<td><html:img src="<%=producte.getUrl() %>"/></td>
-				<td><html:submit>Elimina</html:submit></td>
+				<td><html:submit styleClass="btn btn-primary">Elimina</html:submit></td>
 		</html:form>
 		
 		</tr>

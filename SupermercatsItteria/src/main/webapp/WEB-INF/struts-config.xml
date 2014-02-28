@@ -6,6 +6,9 @@
 <struts-config>
 
 	<form-beans>
+	<form-bean name="ContaForm"
+			type="com.market.form.ContaForm" />
+			<form-bean name="Sessio" type="com.market.VO.Sessio" />
 		<form-bean name="usuari" type="com.market.VO.Usuari" />
 		<form-bean name="LoginForm" type="com.market.VO.LoginBean" />
 		<form-bean name="CarroForm" type="com.market.form.CarroForm" />
@@ -39,7 +42,17 @@
 			scope="session" type="com.market.action.CarroAction">
         		<forward name="success" path="/mostrarproductes.jsp"/>
         </action>
-        
+        <action path="/conta" name="ContaForm" validate="true" input="/checkcarrito.jsp"
+			type="com.market.action.ContaAction">
+			<forward name="success" path="/confirmacioCompra.jsp" />
+			<forward name="failure" path="/formulariConta.jsp" />
+		</action>
+
+		<action path="/logout" name="Sessio" validate="true" input="/confirmacioCompra.jsp"
+			type="com.market.action.LogoutAction">
+			<forward name="success" path="/index.jsp" />
+			<forward name="failure" path="/index.jsp" />
+		</action>
    
 
 	</action-mappings>

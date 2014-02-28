@@ -5,6 +5,18 @@
 
 <form-validation>
 	<formset>
+		<form name="ContaForm">
+			<field property="usertarjeta" depends="required">
+				<msg name="required" key="err.user.username.required" />
+			</field>
+
+			<field property="useradreça" depends="required">
+				<msg name="required" key="err.user.username.required" />
+			</field>
+
+		</form>
+	</formset>
+	<formset>
 		<form name="usuari">
 			<field property="nick" depends="required,maxlength,minlength,mask">
 
@@ -134,12 +146,12 @@
 				<msg name="email" key="err.user.email.invalid" />
 			</field>
 
-<!-- 			<field property="usuari" depends="required"> -->
-<!-- 				<msg name="required" key="err.user.usuari.required" /> -->
-<!-- 			</field> -->
-<!-- 			<field property="clau" depends="required"> -->
-<!-- 				<msg name="requide" key="err.user.clau.required" /> -->
-<!-- 			</field> -->
+			<!-- <field property="usuari" depends="required"> -->
+			<!-- <msg name="required" key="err.user.usuari.required" /> -->
+			<!-- </field> -->
+			<!-- <field property="clau" depends="required"> -->
+			<!-- <msg name="requide" key="err.user.clau.required" /> -->
+			<!-- </field> -->
 
 		</form>
 	</formset>

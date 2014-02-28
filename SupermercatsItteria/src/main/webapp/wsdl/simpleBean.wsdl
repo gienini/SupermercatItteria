@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://VO.market.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://VO.market.com" xmlns:intf="http://VO.market.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://VO.market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="setProva">
+    <complexType>
+     <sequence>
+      <element name="prova" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setProvaResponse">
+    <complexType/>
+   </element>
+   <element name="getProva">
+    <complexType/>
+   </element>
+   <element name="getProvaResponse">
+    <complexType>
+     <sequence>
+      <element name="getProvaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getProvaRequest">
+
+      <wsdl:part element="impl:getProva" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setProvaResponse">
+
+      <wsdl:part element="impl:setProvaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setProvaRequest">
+
+      <wsdl:part element="impl:setProva" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProvaResponse">
+
+      <wsdl:part element="impl:getProvaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="simpleBean">
+
+      <wsdl:operation name="setProva">
+
+         <wsdl:input message="impl:setProvaRequest" name="setProvaRequest"/>
+
+         <wsdl:output message="impl:setProvaResponse" name="setProvaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProva">
+
+         <wsdl:input message="impl:getProvaRequest" name="getProvaRequest"/>
+
+         <wsdl:output message="impl:getProvaResponse" name="getProvaResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="simpleBeanSoapBinding" type="impl:simpleBean">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="setProva">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setProvaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setProvaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProva">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProvaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProvaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="simpleBeanService">
+
+      <wsdl:port binding="impl:simpleBeanSoapBinding" name="simpleBean">
+
+         <wsdlsoap:address location="http://localhost:8080/SupermercatsItteria/services/simpleBean"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

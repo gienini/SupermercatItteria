@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from simpleBeanService WSDL service -->
+
+  <service name="simpleBean" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://VO.market.com"/>
+      <parameter name="wsdlServiceElement" value="simpleBeanService"/>
+      <parameter name="schemaQualified" value="http://VO.market.com"/>
+      <parameter name="wsdlServicePort" value="simpleBean"/>
+      <parameter name="className" value="com.market.VO.simpleBean"/>
+      <parameter name="wsdlPortType" value="simpleBean"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://VO.market.com" name="setProva" qname="operNS:setProva" soapAction="">
+        <parameter xmlns:pns="http://VO.market.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:prova" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://VO.market.com" xmlns:retNS="http://VO.market.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getProva" qname="operNS:getProva" returnQName="retNS:getProvaReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getProva setProva"/>
+
+  </service>
+</deployment>

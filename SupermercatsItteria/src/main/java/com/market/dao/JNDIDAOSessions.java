@@ -64,11 +64,14 @@ public class JNDIDAOSessions implements IDAOSessions {
                 rs = ps.executeQuery();
                 
                 Map<Producte, Integer> mapa2 = carroR;
+                Integer valor=0;
+                String clau="";
                 //Substituim el hasmap per tenir els detalls del producte
                 while (rs.next()) {
+                    valor= carroR.get(new Producte(rs.getString(2)));
                     carroR.remove(new Producte(rs.getString(2)));
-                    carroR.put(new Producte(rs.getString(2),rs.getFloat(3),rs.getInt(4),rs.getString(1)), mapa2.get(rs.getString(2)));
-                    System.out.println("HE ENTRAT I EL PREU ES: "+rs.getInt(3));
+                    carroR.put(new Producte(rs.getString(2),rs.getFloat(3),rs.getInt(4),rs.getString(1)),valor);
+                    System.out.println("HE ENTRAT I LA CUANTITAT ES: "+valor);
                 }
                 retorn.setCarrito(carroR);
 

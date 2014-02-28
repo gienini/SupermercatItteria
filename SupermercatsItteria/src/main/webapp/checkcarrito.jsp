@@ -6,15 +6,22 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<title>Supermercat Iterria | Comprovació Comanda</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>rap</title>
-	<style>
+<style type="text/css">
+h2 { color: black;font-family:Verdana; }
+}
+<%@ include file="css/bootstrap.min.css" %>
+body {
+background-color:#D8D8D8;
+}
 form {
 	display: inline;
 }
 </style>
+<head>
+<title>Supermercat Iterria | Comprovació Comanda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rap</title>
+
 </head>
 <body>
 <h1>Comprovació Comanda</h1><br></br>

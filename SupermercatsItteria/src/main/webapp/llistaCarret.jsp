@@ -26,6 +26,8 @@
 		Iterator it = carrito.entrySet().iterator();
 		while( it.hasNext() ){ 
 			Producte producte = ((Producte)((Map.Entry)it.next()).getKey());
+			String URLProducte = producte.getUrl();
+			System.out.println(URLProducte);
 		%>
 		<tr>
 		<html:form action="DeleteProduct.do">	
@@ -34,8 +36,8 @@
 				<html:hidden property="nom" value="<%=producte.getNom()%>"/>
 				<html:hidden property="preu" value="<%=String.valueOf(producte.getPreu())%>"/>
 				<html:hidden property="stock" value="<%=String.valueOf(producte.getStock())%>" />
-				<html:hidden property="url" value="<%=producte.getUrl()%>"/>
-				<td><html:img src="<%=producte.getUrl() %>"/></td>
+				<html:hidden property="url" value="<%=URLProducte%>"/>
+				<td><html:img src="<%=URLProducte %>"/></td>
 				<td><html:submit styleClass="btn btn-primary">Elimina</html:submit></td>
 		</html:form>
 		

@@ -4,6 +4,15 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style type="text/css">
+h2 { color: black;font-family:Verdana; }
+}
+<%@ include file="css/bootstrap.min.css" %>
+body {
+background-color:#D8D8D8;
+}
+</style>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Supermercat Iterria |Guardar comanda</title>
@@ -23,12 +32,7 @@ form {
 		<input type="submit" value="modificar-la">
 	</form>
 	<form action="index.jsp">
-		<%
-			Sessio sessio = (Sessio)request.getSession().getAttribute("sessio");
-			JNDIDAOSessions dao = new JNDIDAOSessions();
-			dao.populateDB(sessio, null);
-			request.getSession().setAttribute("sessio", null);
-		%>
+		
 		<input type="submit" value="guardar-la">
 	</form>
 </body>

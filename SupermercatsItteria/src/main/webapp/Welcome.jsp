@@ -3,7 +3,17 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+
 <html>
+<style type="text/css">
+h2 { color: black;font-family:Verdana; }
+}
+<%@ include file="css/bootstrap.min.css" %>
+body {
+background-color:#D8D8D8;
+}
+</style>
+
 <head>
 <title>Welcome</title>
 </head> 

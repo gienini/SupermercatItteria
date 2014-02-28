@@ -3,6 +3,14 @@
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c"%>
 <html>
+<style type="text/css">
+h2 { color: black;font-family:Verdana; }
+}
+<%@ include file="css/bootstrap.min.css" %>
+body {
+background-color:#D8D8D8;
+}
+</style>
 <head>
 </head>
 <body>

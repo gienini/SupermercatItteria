@@ -69,7 +69,7 @@ CREATE TABLE `comandes` (
 
 LOCK TABLES `comandes` WRITE;
 /*!40000 ALTER TABLE `comandes` DISABLE KEYS */;
-INSERT INTO `comandes` VALUES (1,'fran','manzana',10,0),(1,'fran','pera',15,0);
+INSERT INTO `comandes` VALUES (1,'fran','manzana',5,1),(2,'fran','manzana',44,1),(3,'fran','manzana',4,0),(3,'fran','pera',5,0);
 /*!40000 ALTER TABLE `comandes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `productes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productes` (
-  `url` varchar(50) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
   `nom` varchar(50) NOT NULL DEFAULT '',
   `preu` float DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `productes` (
 
 LOCK TABLES `productes` WRITE;
 /*!40000 ALTER TABLE `productes` DISABLE KEYS */;
-INSERT INTO `productes` VALUES (' ','manzana',10,140),(' ','pera',10,85);
+INSERT INTO `productes` VALUES ('http://www.keepflowers.ru/wp-content/uploads/2008/09/small-cactus-299x300.jpg','cactus',225.67,3000),('http://otcasea.gob.do/wp-content/uploads/2012/06/mango.jpeg','mango',17.75,17),('http://static2.lasrecetascocina.com/wp-content/uploads/2008/12/pera-150x150.jpg','pera',10.5,200),('http://blogs.funiber.org/wp-content/uploads/2013/05/banana1.jpg','platan',28.97,26),('http://dat.etsit.upm.es/~luciano/blog/wp-content/uploads/2010/09/manzana-150x150.png','poma',5.7,50);
 /*!40000 ALTER TABLE `productes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `usuaris` (
 
 LOCK TABLES `usuaris` WRITE;
 /*!40000 ALTER TABLE `usuaris` DISABLE KEYS */;
-INSERT INTO `usuaris` VALUES ('fran','1234','fran',12,'asasas','123513','compte');
+INSERT INTO `usuaris` VALUES ('fran','1234','fran',12,'asasas','123513','compte'),('fran2','1234567','1234',18,'ddasasdas@adkaf.com','123456789',NULL),('fran3','1234567','1234',18,'ddasasdas@adkaf.com','123456789',NULL);
 /*!40000 ALTER TABLE `usuaris` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-27 11:58:17
+-- Dump completed on 2014-02-28 12:13:40

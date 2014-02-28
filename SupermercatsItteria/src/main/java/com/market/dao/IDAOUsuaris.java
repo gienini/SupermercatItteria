@@ -23,4 +23,13 @@ public interface IDAOUsuaris {
      */
     public boolean isLogin(LoginBean u);
 
+    /**
+     * Comprova si existeix aquest usuari a la BD
+     * 
+     * @param u
+     *            l'usuari amb nom per comprovar
+     * @return true si existeix i false si no
+     */
+    public boolean userExists(Usuari u);
+
 }

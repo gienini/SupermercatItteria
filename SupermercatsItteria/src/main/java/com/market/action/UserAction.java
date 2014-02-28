@@ -10,6 +10,7 @@ package com.market.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -25,15 +26,24 @@ public class UserAction extends Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
-        Usuari lf = (Usuari) form;
-
-        Usuari nouUsuari = new Usuari(lf.getNick(), lf.getNom(), lf.getPass(),
-                null, lf.getEdat(), lf.getEmail(), lf.getTelefon(), null);
+        Usuari lf = (Usuari) form; HttpSession sessio= request.getSession();
 
         JNDIDAOUsuaris DAOUsuaris = new JNDIDAOUsuaris();
-        DAOUsuaris.addUsuari(nouUsuari);
+        if(!DAOUsuaris.userExists(lf)){
+           
+            sessio.setAttribute("nick", lf.getNick());
+            sessio.setAttribute("nom", lf.getNom());
+            sessio.setAttribute("edat", lf.getEdat());
+            sessio.setAttribute("email", lf.getEmail());
+            sessio.setAttribute("telefon", lf.getTelefon());
+            sessio.setAttribute("compteb", lf.getCompteb());
 
-        return mapping.findForward("success");
+            return mapping.findForward("success");
+        }
+        else{
+            sessio.setAttribute("fail", 1);
+            return mapping.findForward("error");
+        }
     }
 
 }

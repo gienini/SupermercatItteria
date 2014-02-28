@@ -52,4 +52,22 @@ public class JNDIDAOUsuaris implements IDAOUsuaris {
         return false;
     }
 
+    @Override
+    public boolean userExists(Usuari u) {
+        Connection con = ConnectionStatic.getConnection();
+        try {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT COUNT(*) FROM usuaris WHERE nick='"
+                            + u.getNick()+ "';");
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            if (rs.getInt(1)>0){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

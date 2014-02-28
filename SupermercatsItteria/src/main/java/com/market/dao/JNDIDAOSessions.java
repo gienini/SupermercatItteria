@@ -44,17 +44,17 @@ public class JNDIDAOSessions implements IDAOSessions {
                 retorn.setIdComanda(rs.getInt(1));
                 retorn.setNick(u.getNick());
                 // Construim una llista de noms de productes
-                String whereIn = "'" + rs.getString(3) + "', ";
+                String whereIn = "'" + rs.getString(3) + "', '";
                 String nom = "";
                 carroR = new HashMap<Producte, Integer>();
                 carroR.put(new Producte(rs.getString(3)), rs.getInt(4));
 //Omplim el carro amb productes i quantitats
                 while (rs.next()) {
                     nom = rs.getString(3);
-                    whereIn = whereIn + nom + "', '";
+                    whereIn = whereIn + nom + "' , '";
                     carroR.put(new Producte(rs.getString(3)), rs.getInt(4));
                 }
-                whereIn = whereIn.substring(0, whereIn.length() - 2);
+                whereIn = whereIn.substring(0, whereIn.length() - 3);
                 System.out.println("TENIM EL IN: " + whereIn);
 
                 // Consulta de preus de productes

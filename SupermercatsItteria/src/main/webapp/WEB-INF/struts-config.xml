@@ -6,54 +6,58 @@
 <struts-config>
 
 	<form-beans>
-	<form-bean name="ContaForm"
-			type="com.market.form.ContaForm" />
-			<form-bean name="Sessio" type="com.market.VO.Sessio" />
+		<form-bean name="ContaForm" type="com.market.form.ContaForm" />
+		<form-bean name="Sessio" type="com.market.VO.Sessio" />
 		<form-bean name="usuari" type="com.market.VO.Usuari" />
 		<form-bean name="LoginForm" type="com.market.VO.LoginBean" />
 		<form-bean name="CarroForm" type="com.market.form.CarroForm" />
 	</form-beans>
 
 	<action-mappings>
-	
-	
-		<action path="/Login" type="com.market.action.LoginAction" name="LoginForm"
-			input="/Login.jsp">
+
+
+		<action path="/Login" type="com.market.action.LoginAction"
+			name="LoginForm" input="/Login.jsp">
 			<forward name="success" path="/mostrarproductes.jsp" />
 			<forward name="error" path="/Login.jsp" />
 
 		</action>
-			
+
 		<action path="/LoginUserPage" type="org.apache.struts.actions.ForwardAction"
 			parameter="/Login.jsp" />
 
-		<action path="/Register" type="com.market.action.UserAction" name="usuari"
-			input="/RegisterUser.jsp">
+		<action path="/Register" type="com.market.action.UserAction"
+			name="usuari" input="/RegisterUser.jsp">
 
-			<forward name="success" path="/ThanksYou.jsp" />
+			<forward name="success" path="/RegisterValidation.jsp" />
 			<forward name="error" path="/RegisterUser.jsp" />
 
 		</action>
 
 		<action path="/RegisterUserPage" type="org.apache.struts.actions.ForwardAction"
 			parameter="/RegisterUser.jsp" />
-			
-			    <action input="/mostrarproductes.jsp" name="CarroForm" path ="/carro"
+		<action path="/Validation" type="com.market.action.UserValidationAction"
+			name="usuari" input="/RegisterValidation.jsp">
+			<forward name="success" path="/ThanksYou.jsp" />
+			<forward name="failure" path="/RegisterUser.jsp" />
+		</action>
+
+		<action input="/mostrarproductes.jsp" name="CarroForm" path="/carro"
 			scope="session" type="com.market.action.CarroAction">
-        		<forward name="success" path="/mostrarproductes.jsp"/>
-        </action>
-        <action path="/conta" name="ContaForm" validate="true" input="/formulariConta.jsp"
-			type="com.market.action.ContaAction">
+			<forward name="success" path="/mostrarproductes.jsp" />
+		</action>
+		<action path="/conta" name="ContaForm" validate="true"
+			input="/formulariConta.jsp" type="com.market.action.ContaAction">
 			<forward name="success" path="/confirmacioCompra.jsp" />
 			<forward name="failure" path="/formulariConta.jsp" />
 		</action>
 
-		<action path="/logout" name="Sessio" validate="true" input="/confirmacioCompra.jsp"
-			type="com.market.action.LogoutAction">
+		<action path="/logout" name="Sessio" validate="true"
+			input="/confirmacioCompra.jsp" type="com.market.action.LogoutAction">
 			<forward name="success" path="/index.jsp" />
 			<forward name="failure" path="/index.jsp" />
 		</action>
-   
+
 
 	</action-mappings>
 
